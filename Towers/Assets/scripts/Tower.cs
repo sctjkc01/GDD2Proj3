@@ -6,7 +6,7 @@ public class Tower : MonoBehaviour {
 	/// <summary>
 	/// The _mods only GameObject for now
 	/// </summary>
-	private GameObject _mods[4];
+	public GameObject[] _mods = new GameObject[4];
 
 	/// <summary>
 	/// The time between shots.
