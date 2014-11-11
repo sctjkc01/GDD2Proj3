@@ -4789,8 +4789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f637c0e8ae4d0b479612e0a57134528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: a97bad042ec997941ad0107520716d79, type: 3}
+  red: {fileID: 21300000, guid: 80141ee0187476d468b6f2b3d3d6d463, type: 3}
 --- !u!1001 &99671261
 Prefab:
   m_ObjectHideFlags: 0
@@ -14128,6 +14128,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerPrefab: {fileID: 400002, guid: 25ebe59d67cd4704286cddd396398659, type: 2}
+--- !u!1 &223784293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 223784295}
+  - 114: {fileID: 223784294}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &223784294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223784293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee01f4fa7dffd2418cb047b0200f352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 400000, guid: 4fe05d12f58a52140860d2ae4ee47228, type: 2}
+  start: {fileID: 1108460870}
+  end: {fileID: 495503170}
+  counter: 0
+--- !u!4 &223784295
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223784293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.62239027, y: 0, z: -9.22875118}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &223963372
 GameObject:
   m_ObjectHideFlags: 0
