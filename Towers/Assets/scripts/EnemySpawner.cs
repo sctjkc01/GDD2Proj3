@@ -4,12 +4,14 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
 
     public Transform enemy;
-    public PathTile start;
+    public PathTile start, end;
     public float counter;
 
     // Use this for initialization
     void Start() 
     {
+        Enemy.start = start;
+        Enemy.end = end;
     }
 
     void roundStart() 
