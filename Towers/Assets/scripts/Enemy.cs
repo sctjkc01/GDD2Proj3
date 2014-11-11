@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour {
 
 	public float health = 20;
-    public float listIndex = 0;
+    public int listIndex = 0;
 
     public static PathTile start;
     public static PathTile end;
@@ -16,22 +16,22 @@ public class Enemy : MonoBehaviour {
    	// Use this for initialization
 	void Start()
     {
-        GameObject.getComponent<TileMap>().findPath(start, end, tileList);
+        gameObject.GetComponent<TileMap>().FindPath(start, end, tileList);
 	}
 	
 	// Update is called once per frame
 	void Update() 
     {
         movement = transform.position - tileList[listIndex].transform.position;
-        transform.translate(movement * Time.deltaTime);
+        transform.Translate(movement * Time.deltaTime);
         if (health < 1)
         {
             Destroy(this.gameObject);
         }
 
-        if (transform.positon == tileList[listIndex].transform.position)
+        if (transform.position == tileList[listIndex].transform.position)
         {
-            if (listIndex == tileList.length)
+            if (listIndex == tileList.Count)
             {
                 //make player lose life here
                 Destroy(this.gameObject);
