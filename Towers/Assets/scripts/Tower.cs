@@ -49,7 +49,7 @@ public class Tower : MonoBehaviour {
 	void Fire(GameObject target)
 	{
 
-		Debug.Log("Dicks");
+		Debug.Log(target.name);
 
 		_timer = timeBetweenShots;
 
@@ -79,7 +79,11 @@ public class Tower : MonoBehaviour {
 
 		if (_timer <= 0 && enemies.Count != 0)
 		{
-			Fire(enemies[0]);
+			if (enemies[0] == null) { enemies.RemoveAt(0); }
+			else
+			{
+				Fire(enemies[0]);
+			}
 		}
 	
 	}
