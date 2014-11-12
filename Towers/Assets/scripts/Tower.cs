@@ -46,9 +46,12 @@ public class Tower : MonoBehaviour {
 		Debug.Log("poob");
 	}
 
-	void Fire()
+	void Fire(GameObject target)
 	{
 
+		Debug.Log("Dicks");
+
+		_timer = timeBetweenShots;
 
 	}
 
@@ -72,7 +75,12 @@ public class Tower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		_timer -= Time.deltaTime;
 
+		if (_timer <= 0 && enemies.Count != 0)
+		{
+			Fire(enemies[0]);
+		}
 	
 	}
 }
