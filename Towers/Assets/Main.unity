@@ -85332,9 +85332,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemies: []
-  timeBetweenShots: .5
-  dammage: 1
-  range: 1
 --- !u!23 &1455727264
 Renderer:
   m_ObjectHideFlags: 0
