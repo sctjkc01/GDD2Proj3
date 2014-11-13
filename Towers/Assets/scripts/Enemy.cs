@@ -4,32 +4,40 @@ using System.Collections.Generic;
 public class Enemy : MonoBehaviour {
 
 	public float health = 20;
+    public float speed = 1;
+    public static PathTile start, end;
+    public Vector3 movement = new Vector3(0, 0, 0);
     public int listIndex = 0;
-
-    public static PathTile start;
-    public static PathTile end;
-
-    public Vector3 movement;
-
-    public List<PathTile> tileList;
+    public List<PathTile> tileList = new List<PathTile>();
 
    	// Use this for initialization
 	void Start()
     {
-        gameObject.GetComponent<TileMap>().FindPath(start, end, tileList);
+        if (GameObject.Find("TileMap").GetComponent<TileMap>().FindPath(start, end, tileList))
+        {
+            Debug.Log("Path found!");
+        }
+
+        else
+        {
+            Debug.Log("Path not found!");
+        }
 	}
 	
 	// Update is called once per frame
 	void Update() 
     {
-        movement = transform.position - tileList[listIndex].transform.position;
+        movement = tileList[listIndex].transform.position - transform.position;
+        movement = movement.normalized * speed;
+
         transform.Translate(movement * Time.deltaTime);
+
         if (health < 1)
         {
             Destroy(this.gameObject);
         }
 
-        if (transform.position == tileList[listIndex].transform.position)
+        if (transform.position.x == tileList[listIndex].transform.position.x && transform.position.y == tileList[listIndex].transform.position.y)
         {
             if (listIndex == tileList.Count)
             {
@@ -40,6 +48,7 @@ public class Enemy : MonoBehaviour {
             else
             {
                 listIndex++;
+                Debug.Log(movement);
             }
         }
 	}
