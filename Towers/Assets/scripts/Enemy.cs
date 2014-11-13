@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update() 
     {
-        movement = tileList[listIndex].transform.position - transform.position;
+        movement = (tileList[listIndex].transform.position + new Vector3(0f, 0.51f, 0f)) - transform.position;
         movement = movement.normalized * speed;
 
         transform.Translate(movement * Time.deltaTime);
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
-        if (transform.position.x == tileList[listIndex].transform.position.x && transform.position.y == tileList[listIndex].transform.position.y)
+        if (Vector3.Distance(transform.position, tileList[listIndex].transform.position + new Vector3(0f, 0.51f, 0f)) < 0.05f)
         {
             if (listIndex == tileList.Count)
             {

@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -69,6 +70,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184a2376a0d54034ca04d8deddd3f472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  speed: 1
+  movement: {x: 0, y: 0, z: 0}
+  listIndex: 0
+  tileList: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
