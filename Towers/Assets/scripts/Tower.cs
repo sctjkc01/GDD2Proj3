@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(SphereCollider))]
 public class Tower : MonoBehaviour
 {
 
@@ -15,7 +16,7 @@ public class Tower : MonoBehaviour
     public TowerAttributes attribs;
     public List<GameObject> enemies = new List<GameObject>();
 
-    private Collider colider;
+    private SphereCollider colider;
     private float _timer = 0;
 
 
@@ -62,7 +63,7 @@ public class Tower : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        colider = this.gameObject.GetComponent<Collider>();
+        colider = this.gameObject.GetComponent<SphereCollider>();
         attribs = new TowerAttributes();
         attribs.FireRate = 0.5f;
         if (mods[0] == null)
