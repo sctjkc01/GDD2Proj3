@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class AddTower : MonoBehaviour {
     public static List<PathTile> PathTestBlacklist;
     public static Transform indicator;
-    public static bool PlacingTowers = true;
+    public static bool PlacingTowers = false;
     public Transform TowerPrefab;
 
     void Start() {

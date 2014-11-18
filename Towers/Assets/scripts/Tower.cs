@@ -66,13 +66,13 @@ public class Tower : MonoBehaviour
         colider = this.gameObject.GetComponent<SphereCollider>();
         attribs = new TowerAttributes();
         attribs.FireRate = 0.5f;
-        if (mods[0] == null)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                mods[i] = new BaseModule();
-            }
-        }
+        //if (mods[0] == null)
+        //{
+        //    for (int i = 0; i < 4; i++)
+        //    {
+        //        mods[i] = ScriptableObject.CreateInstance<BaseModule>();
+        //    }
+        //}
         foreach (Module m in mods)
         {
             Module.MultiplyAttributes(attribs, m);

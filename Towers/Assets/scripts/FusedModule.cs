@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class FusedModule : Module
 {
     public FusedModule(Module m1, Module m2)
@@ -20,5 +21,10 @@ public class FusedModule : Module
         this.attribs.FireRate = fireRate;
         this.attribs.Splash = splash;
         this.attribs.Element = elem;
+    }
+
+    public FusedModule(FusedTemplate template) {
+        this.level = 1;
+        this.attribs = template.attribs;
     }
 }

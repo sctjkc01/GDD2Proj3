@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(Camera))]
 public class CameraControl : MonoBehaviour {
 
+    public static bool zoomOnScroll = true;
     private Camera cam;
 
     void Start() {
@@ -16,7 +17,9 @@ public class CameraControl : MonoBehaviour {
         translate += new Vector3(-1, 0, 0) * Input.GetAxis("Vertical") * cam.orthographicSize * 2.0f * Time.deltaTime * (Input.GetKey(KeyCode.LeftShift) ? 2.0f : 1.0f);
         transform.Translate(translate, Space.World);
 
-        cam.orthographicSize += Input.GetAxis("Mouse ScrollWheel") * -2.5f;
+        if(zoomOnScroll) {
+            cam.orthographicSize += Input.GetAxis("Mouse ScrollWheel") * -2.5f;
+        }
     }
 
     public void ToggleTowerPlace() {

@@ -1,19 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Module : ScriptableObject {
+[System.Serializable]
+public abstract class Module {
     public TowerAttributes attribs;
     public int level;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public static void MultiplyAttributes (TowerAttributes a, Module m)
     {
