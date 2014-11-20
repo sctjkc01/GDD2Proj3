@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour
     /// Attributes for this tower. Multiplied off of our Modules.
     /// </summary>
     public TowerAttributes attribs;
-    public List<GameObject> enemies = new List<GameObject>();
+    public List<Enemy> enemies = new List<Enemy>();
 
     private SphereCollider colider;
     private float _timer = 0;
@@ -26,9 +26,12 @@ public class Tower : MonoBehaviour
     {
         if (obj.tag == "Enemy")
         {
-            enemies.Add(obj.gameObject);
+			Debug.Log("boop");
+            enemies.Add(obj.gameObject.GetComponent<Enemy>());
         }
-        Debug.Log("boop");
+
+		Debug.Log("boop");
+
     }
 
 
@@ -36,15 +39,14 @@ public class Tower : MonoBehaviour
     {
         if (obj.tag == "Enemy")
         {
-            enemies.Remove(obj.gameObject);
+			enemies.Remove(obj.gameObject.GetComponent<Enemy>());
         }
-        Debug.Log("poob");
     }
 
-    void Fire(GameObject target)
+    void Fire(Enemy e)
     {
 
-        Debug.Log(target.name);
+		e.takeDamage(attribs.Damage);
 
         _timer = attribs.FireRate;
 
