@@ -26,8 +26,12 @@ public class Tower : MonoBehaviour
     {
         if (obj.tag == "Enemy")
         {
+			Debug.Log("boop");
             enemies.Add(obj.gameObject.GetComponent<Enemy>());
         }
+
+		Debug.Log("boop");
+
     }
 
 
