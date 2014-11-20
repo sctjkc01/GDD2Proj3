@@ -9,7 +9,8 @@ public class Tower : MonoBehaviour
     /// <summary>
     /// The _mods only GameObject for now
     /// </summary>
-    public Module[] mods = new Module[4];
+    public FusedModule[] attrMods = new FusedModule[3];
+    public FusedModule elementMod = null;
     /// <summary>
     /// Attributes for this tower. Multiplied off of our Modules.
     /// </summary>
@@ -73,9 +74,11 @@ public class Tower : MonoBehaviour
         //        mods[i] = ScriptableObject.CreateInstance<BaseModule>();
         //    }
         //}
-        foreach (Module m in mods)
+        for(int i = 0; i < 3; i++) 
         {
-            Module.MultiplyAttributes(attribs, m);
+            if(attrMods[i] != null) {
+                Module.MultiplyAttributes(attribs, attrMods[i]);
+            }
         }
     }
 
