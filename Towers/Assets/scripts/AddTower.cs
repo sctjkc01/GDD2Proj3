@@ -14,7 +14,7 @@ public class AddTower : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-        if(PlacingTowers) {
+        if(PlacingTowers && !(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft > 0)) {
             indicator.position = transform.position + new Vector3(-0.5f, 0.1f, -0.5f);
 
             IndicatorControl ic = indicator.GetComponent<IndicatorControl>();
@@ -49,7 +49,7 @@ public class AddTower : MonoBehaviour {
     }
 
     void OnMouseUpAsButton() {
-        if(PlacingTowers && indicator.GetComponent<IndicatorControl>().Green) {
+        if(PlacingTowers && !(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft > 0) && indicator.GetComponent<IndicatorControl>().Green) {
             Invoke("SetTile", 0.1f);
         }
     }

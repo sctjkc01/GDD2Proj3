@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public Vector3 movement = new Vector3(0, 0, 0);
     public int listIndex = 0;
     public List<PathTile> tileList = new List<PathTile>();
+    public int bounty;
 
    	// Use this for initialization
 	void Start()
@@ -35,6 +36,8 @@ public class Enemy : MonoBehaviour {
         if (health < 1)
         {
             Destroy(this.gameObject);
+            GameManager.inst.enemiesAlive--;
+            GameManager.inst.cash += bounty;
         }
 
         if (Vector3.Distance(transform.position, tileList[listIndex].transform.position + new Vector3(0f, 0.51f, 0f)) < 0.05f)
@@ -43,6 +46,7 @@ public class Enemy : MonoBehaviour {
             {
                 //make player lose life here
                 Destroy(this.gameObject);
+                GameManager.inst.enemiesAlive--;
             }
 
             else

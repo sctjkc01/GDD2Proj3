@@ -96,5 +96,7 @@ public class Tower : MonoBehaviour
             }
         }
 
+        colider.enabled = (GameManager.inst.enemiesAlive > 0);
+
     }
 }

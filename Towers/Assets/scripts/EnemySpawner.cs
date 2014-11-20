@@ -5,7 +5,6 @@ public class EnemySpawner : MonoBehaviour {
 
     public Transform enemy;
     public PathTile start, end;
-    public int counter;
 
     // Use this for initialization
     void Start()
@@ -17,7 +16,8 @@ public class EnemySpawner : MonoBehaviour {
 
     public void RoundStart() 
     {
-        counter = 0;
+        if(GameManager.inst.enemiesLeft > 0) return;
+        GameManager.inst.enemiesLeft = GameManager.inst.enemiesToSpawn;
         InvokeRepeating("SpawnEnemies", 0.0f, 5.0f);
     }
 
@@ -26,9 +26,10 @@ public class EnemySpawner : MonoBehaviour {
         Vector3 location = start.transform.position + new Vector3(0f, 0.51f, 0f);
         //Debug.Log("I want to see an enemy here: " + location);
         Instantiate(enemy, location, Quaternion.identity);
-        counter++;
+        GameManager.inst.enemiesLeft--;
+        GameManager.inst.enemiesAlive++;
 
-        if (counter > 20)
+        if (GameManager.inst.enemiesLeft == 0)
         {
             CancelInvoke();
         }
