@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour {
     {
         if(GameManager.inst.enemiesLeft > 0) return;
         GameManager.inst.enemiesLeft = GameManager.inst.enemiesToSpawn;
-        InvokeRepeating("SpawnEnemies", 0.0f, 5.0f);
+        InvokeRepeating("SpawnEnemies", 0.0f, 1.0f);
     }
 
     void SpawnEnemies() 

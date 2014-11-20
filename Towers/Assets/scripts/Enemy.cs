@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Enemy : MonoBehaviour {
 
 	public float health = 20;
-    public float speed = 1;
+    public float speed = 2.5f;
     public static PathTile start, end;
     public Vector3 movement = new Vector3(0, 0, 0);
     public int listIndex = 0;
@@ -33,16 +33,9 @@ public class Enemy : MonoBehaviour {
 
         transform.Translate(movement * Time.deltaTime);
 
-        if (health < 1)
-        {
-            Destroy(this.gameObject);
-            GameManager.inst.enemiesAlive--;
-            GameManager.inst.cash += bounty;
-        }
-
         if (Vector3.Distance(transform.position, tileList[listIndex].transform.position + new Vector3(0f, 0.51f, 0f)) < 0.05f)
         {
-            if (listIndex == tileList.Count)
+            if (listIndex == tileList.Count - 1)
             {
                 //make player lose life here
                 Destroy(this.gameObject);
@@ -65,7 +58,9 @@ public class Enemy : MonoBehaviour {
 
 		if (health <= 0)
 		{
-			Destroy(this.gameObject);
+            Destroy(this.gameObject);
+            GameManager.inst.enemiesAlive--;
+            GameManager.inst.cash += bounty;
 		}
     }
 }

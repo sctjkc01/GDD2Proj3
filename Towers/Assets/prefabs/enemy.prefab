@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -98,10 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  speed: 1
+  speed: 2.5
   movement: {x: 0, y: 0, z: 0}
   listIndex: 0
   tileList: []
+  bounty: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

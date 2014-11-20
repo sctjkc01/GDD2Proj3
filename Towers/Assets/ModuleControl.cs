@@ -4,8 +4,8 @@ using System.Collections;
 public class ModuleControl : UIDragDropItem {
     public FusedTemplate template;
     public FusedModule myModule;
-    public bool isOriginal = true;
-    public bool isBase = true;
+    public bool isOriginal = false;
+    public bool isBase = false;
 
     protected override void Start() {
         base.Start();
@@ -15,10 +15,10 @@ public class ModuleControl : UIDragDropItem {
             myModule = new FusedModule(template);
             template = null;
         }
+        cloneOnDrag = isOriginal && isBase;
     }
 
     void OnHover(bool isOver) {
-        cloneOnDrag = isOriginal && isBase;
         if(isOver) {
             TooltipControl.Show(this.gameObject);
         } else {
@@ -26,7 +26,8 @@ public class ModuleControl : UIDragDropItem {
         }
     }
 
-    //protected override void OnDragDropStart() {
+    //protected override void OnDragDropStart()
+    //{
     //    base.OnDragDropStart();
     //}
 
@@ -35,7 +36,8 @@ public class ModuleControl : UIDragDropItem {
         mCollider.enabled = false;
         if(transform.parent.GetComponent<UIGrid>() != null) {
             transform.parent.GetComponent<UIGrid>().repositionNow = true;
-            transform.parent = transform.parent.parent.parent;
+            transform.parent = UIDragDropRoot.root;
+            NGUITools.MarkParentAsChanged(gameObject);
         }
         if(gameObject.name.EndsWith("(Clone)")) {
             gameObject.name = gameObject.name.Remove(gameObject.name.Length - 7);
@@ -44,20 +46,25 @@ public class ModuleControl : UIDragDropItem {
     }
 
     protected override void OnDragDropRelease(GameObject surface) {
+        if (surface != null && surface.transform.parent.gameObject.name == "Fusion Plate") {
+            surface = surface.transform.parent.gameObject;
+        }
         if(surface == null || surface.name != "Fusion Plate") {
             if(isBase) {
                 Destroy(gameObject);
             } else {
-                if(surface == null) surface = GameObject.Find("ModuleGUI");
+                if(surface == null) surface = GameObject.Find("FusionGUI");
                 mCollider.enabled = true;
-                if(surface.GetComponent<UIDragDropContainer>() != null) {
+                if(surface != null && surface.GetComponent<UIDragDropContainer>() != null) {
                     transform.parent = surface.GetComponent<UIDragDropContainer>().reparentTarget;
+                    NGUITools.MarkParentAsChanged(gameObject);
                     mGrid = NGUITools.FindInParents<UIGrid>(transform.parent);
                     if(mGrid != null) mGrid.repositionNow = true;
                 }
             }
         } else if(surface.name == "Fusion Plate") {
             transform.parent = surface.transform;
+            NGUITools.MarkParentAsChanged(gameObject);
             mCollider.enabled = true;
             ModuleControl[] MCs = surface.transform.GetComponentsInChildren<ModuleControl>();
             if(MCs.Length == 2) {
