@@ -9,6 +9,7 @@ public class TooltipControl : MonoBehaviour {
         if(inst == null) {
             inst = this;
         }
+        Hide();
     }
 
     public static void Show(GameObject mod) {
@@ -22,7 +23,23 @@ public class TooltipControl : MonoBehaviour {
         inst.nameField.text = "[b]" + mod.name + "[/b]";
         string desctext = "";
         FusedModule fm = mod.GetComponent<ModuleControl>().myModule;
-        desctext += "Level: " + fm.level;
+        if(fm.attribs.Element != DamageElements.None) {
+            desctext = "Grants the " + fm.attribs.Element + " element to a tower.";
+        } else {
+            desctext += "Level: " + fm.level + "\n\n";
+            if(fm.attribs.Damage > 1) {
+                desctext += "+" + Mathf.RoundToInt((fm.attribs.Damage - 1) * 100) + "% Damage\n";
+            }
+            if(fm.attribs.FireRate > 1) {
+                desctext += "+" + Mathf.RoundToInt((fm.attribs.FireRate - 1) * 100) + "% Fire Rate\n";
+            }
+            if(fm.attribs.Range > 1) {
+                desctext += "+" + Mathf.RoundToInt((fm.attribs.Range - 1) * 100) + "% Range\n";
+            }
+            if(fm.attribs.Splash > 1) {
+                desctext += "+" + Mathf.RoundToInt((fm.attribs.Splash - 1) * 100) + "% Splash Radius\n";
+            }
+        }
         inst.desc.text = desctext;
     }
 
