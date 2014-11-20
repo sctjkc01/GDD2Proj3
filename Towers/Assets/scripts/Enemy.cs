@@ -53,8 +53,15 @@ public class Enemy : MonoBehaviour {
         }
 	}
 
-    void takeDamage(float dmg)
+    public void takeDamage(float dmg)
     {
         health -= dmg;
+
+		Debug.Log("Hit");
+
+		if (health <= 0)
+		{
+			Destroy(this.gameObject);
+		}
     }
 }
