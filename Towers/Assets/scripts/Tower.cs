@@ -20,6 +20,8 @@ public class Tower : MonoBehaviour
     private SphereCollider colider;
     private float _timer = 0;
 
+	public ParticleSystem ps;
+
 
 
     void OnTriggerEnter(Collider obj)

@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
     public int listIndex = 0;
     public List<PathTile> tileList = new List<PathTile>();
     public int bounty;
+	public ParticleSystem ps;
 
    	// Use this for initialization
 	void Start()
@@ -53,6 +54,8 @@ public class Enemy : MonoBehaviour {
     public void takeDamage(float dmg)
     {
         health -= dmg;
+
+		ps.Play();
 
 		Debug.Log("Hit");
 
