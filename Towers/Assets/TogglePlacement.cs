@@ -4,6 +4,7 @@ using System.Collections;
 public class TogglePlacement : MonoBehaviour {
 
     private UIButton sprite;
+    public UILabel label;
     private bool toggOn = false;
     public Color OnColor, OffColor;
 
@@ -18,10 +19,12 @@ public class TogglePlacement : MonoBehaviour {
         if (toggOn)
         {
             sprite.defaultColor = OnColor;
+            label.text = "Click to stop\nbuying towers";
         }
         else
         {
             sprite.defaultColor = OffColor;
+            label.text = "Click to\nbuy towers";
         }
     }
 }

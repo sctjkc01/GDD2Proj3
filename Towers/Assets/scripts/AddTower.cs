@@ -19,6 +19,12 @@ public class AddTower : MonoBehaviour {
 
             IndicatorControl ic = indicator.GetComponent<IndicatorControl>();
 
+            if(GameManager.inst.cash < 5) {
+                Debug.Log("Fail: Too Poor");
+                ic.Green = false;
+                return;
+            }
+
             Collider[] colls = Physics.OverlapSphere(transform.position + new Vector3(-0.5f, 0.1f, -0.5f), 1f);
             if(colls.Length < 4) { // If this goes off the edge, not valid placement.
                 Debug.Log("Fail: Off Edge");
@@ -49,7 +55,8 @@ public class AddTower : MonoBehaviour {
     }
 
     void OnMouseUpAsButton() {
-        if(PlacingTowers && !(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft > 0) && indicator.GetComponent<IndicatorControl>().Green) {
+        if(PlacingTowers && !(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft > 0) && indicator.GetComponent<IndicatorControl>().Green && GameManager.inst.cash > 4) {
+            GameManager.inst.cash -= 5;
             Invoke("SetTile", 0.1f);
         }
     }
