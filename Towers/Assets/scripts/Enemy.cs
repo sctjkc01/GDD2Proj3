@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour {
 
-	public float health = 20;
+	public float health;
     public float speed = 2.5f;
     public static PathTile start, end;
     public Vector3 movement = new Vector3(0, 0, 0);
@@ -15,14 +15,18 @@ public class Enemy : MonoBehaviour {
    	// Use this for initialization
 	void Start()
     {
+        health = ((GameManager.inst.level + 3) * (GameManager.inst.level + 2)) / 2;
+        
+        //Debug.Log("Enemy Health is: " + health);
+
         if (GameObject.Find("TileMap").GetComponent<TileMap>().FindPath(start, end, tileList))
         {
-            Debug.Log("Path found!");
+            //Debug.Log("Path found!");
         }
 
         else
         {
-            Debug.Log("Path not found!");
+            //Debug.Log("Path not found!");
         }
 	}
 	
@@ -46,7 +50,7 @@ public class Enemy : MonoBehaviour {
             else
             {
                 listIndex++;
-                Debug.Log(movement);
+                //Debug.Log(movement);
             }
         }
 	}
@@ -57,7 +61,7 @@ public class Enemy : MonoBehaviour {
 
 		ps.Play();
 
-		Debug.Log("Hit");
+		//Debug.Log("Hit");
 
 		if (health <= 0)
 		{

@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour {
     {
         Enemy.start = start;
         Enemy.end = end;
-        //InvokeRepeating("SpawnEnemies", 0.0f, 5.0f);
     }
 
     public void RoundStart() 
