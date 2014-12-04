@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     void Start() {
         if(inst == null) inst = this;
         playing = true;
+        level = 0;
     }
 
     void Update() {

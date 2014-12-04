@@ -15,8 +15,12 @@ public class EnemySpawner : MonoBehaviour {
 
     public void RoundStart() 
     {
+        GameManager.inst.level++;
         if(GameManager.inst.enemiesLeft > 0) return;
         GameManager.inst.enemiesLeft = GameManager.inst.enemiesToSpawn;
+        if(GameManager.inst.enemiesAlive > 0) {
+            GameManager.inst.cash += (GameManager.inst.level + 1) * 5;
+        }
         InvokeRepeating("SpawnEnemies", 0.0f, 1.0f);
     }
 
