@@ -44,6 +44,7 @@ public class ModuleControl : UIDragDropItem {
         if(gameObject.name.EndsWith("(Clone)")) {
             gameObject.name = gameObject.name.Remove(gameObject.name.Length - 7);
         }
+        TooltipControl.Hide();
         base.OnDragDropMove(delta);
     }
 

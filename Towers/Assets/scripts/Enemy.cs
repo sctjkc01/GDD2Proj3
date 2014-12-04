@@ -45,6 +45,9 @@ public class Enemy : MonoBehaviour {
                 //make player lose life here
                 GameManager.inst.enemiesAlive--;
                 GameManager.inst.lives--;
+                if(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft == 0) {
+                    GameManager.inst.cash += (GameManager.inst.level + 1) * 5;
+                }
                 DestroyImmediate(this.gameObject);
             }
 
