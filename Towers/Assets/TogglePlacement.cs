@@ -5,7 +5,8 @@ public class TogglePlacement : MonoBehaviour {
 
     private UIButton sprite;
     public UILabel label;
-    private bool toggOn = false;
+    [HideInInspector]
+    public bool toggOn = false;
     public Color OnColor, OffColor;
 
     void Start() {
