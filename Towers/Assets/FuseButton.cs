@@ -35,6 +35,7 @@ public class FuseButton : MonoBehaviour {
     void Update() {
         if(mod1 == null || mod2 == null) {
             label.text = ". . .";
+            GetComponent<UIButton>().enabled = false;
         } else {
             int cost = (mod1.myModule.level + mod2.myModule.level + 1) * 5;
             if(GameManager.inst.cash < cost) {
@@ -42,6 +43,7 @@ public class FuseButton : MonoBehaviour {
                 GetComponent<UIButton>().enabled = false;
             } else {
                 label.text = "Fuse for\n" + cost + " Gold";
+                GetComponent<UIButton>().enabled = true;
             }
         }
     }
