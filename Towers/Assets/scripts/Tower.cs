@@ -48,6 +48,8 @@ public class Tower : MonoBehaviour
     void Fire(Enemy e)
     {
 
+		ps.Play ();
+
 		e.takeDamage(attribs.Damage);
 
         _timer = attribs.FireRate;
@@ -68,6 +70,7 @@ public class Tower : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		ps = this.GetComponentInChildren<ParticleSystem>();
         colider = this.gameObject.GetComponent<SphereCollider>();
         attribs = new TowerAttributes();
         attribs.FireRate = 0.5f;
