@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Range Module
   m_EditorClassIdentifier: 
   attribs:
-    Damage: 1
-    FireRate: 1
-    Splash: 1
-    Range: 2
+    Damage: 0
+    FireRate: 0
+    Splash: 0
+    Range: 1
     Element: 0

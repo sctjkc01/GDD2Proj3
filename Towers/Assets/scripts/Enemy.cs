@@ -43,9 +43,9 @@ public class Enemy : MonoBehaviour {
             if (listIndex == tileList.Count - 1)
             {
                 //make player lose life here
-                Destroy(this.gameObject);
                 GameManager.inst.enemiesAlive--;
                 GameManager.inst.lives--;
+                DestroyImmediate(this.gameObject);
             }
 
             else
@@ -66,12 +66,12 @@ public class Enemy : MonoBehaviour {
 
 		if (health <= 0)
 		{
-            Destroy(this.gameObject);
             GameManager.inst.enemiesAlive--;
             GameManager.inst.cash += GameManager.inst.level;
             if(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft == 0) {
                 GameManager.inst.cash += (GameManager.inst.level + 1) * 5;
             }
+            DestroyImmediate(this.gameObject);
 		}
     }
 }

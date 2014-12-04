@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Fire Rate Module
   m_EditorClassIdentifier: 
   attribs:
-    Damage: 1
-    FireRate: 2
-    Splash: 1
-    Range: 1
+    Damage: 0
+    FireRate: 1
+    Splash: 0
+    Range: 0
     Element: 0

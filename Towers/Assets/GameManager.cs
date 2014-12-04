@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour {
             playing = false;
         }
 
-        towerPlaceButton.SetActive(playing && (enemiesAlive + enemiesLeft > 0));
-        waveLaunchButton.SetActive(playing && (enemiesLeft > 0));
+        towerPlaceButton.SetActive(playing && !(enemiesAlive + enemiesLeft > 0));
+        waveLaunchButton.SetActive(playing && !(enemiesLeft > 0));
     }
 
 }
