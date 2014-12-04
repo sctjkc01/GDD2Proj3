@@ -103,4 +103,30 @@ public class Tower : MonoBehaviour
         colider.enabled = (GameManager.inst.enemiesAlive > 0);
 
     }
+
+    void DisplayNextModule()
+    {
+        MeshRenderer[] renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            if (!renderers[i].enabled)
+            {
+                renderers[i].enabled = true;
+                break;
+            }
+        }
+    }
+
+    void HidePreviousModule()
+    {
+        MeshRenderer[] renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+        for (int i = renderers.Length; i-- > 0; )
+        {
+            if (renderers[i].enabled)
+            {
+                renderers[i].enabled = false;
+                break;
+            }
+        }
+    }
 }
