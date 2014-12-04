@@ -14,7 +14,7 @@ public class AddTower : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-        if(PlacingTowers && !(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft > 0)) {
+        if(GameManager.inst.playing && PlacingTowers && !(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft > 0)) {
             indicator.position = transform.position + new Vector3(-0.5f, 0.1f, -0.5f);
 
             IndicatorControl ic = indicator.GetComponent<IndicatorControl>();

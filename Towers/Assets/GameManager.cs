@@ -14,9 +14,26 @@ public class GameManager : MonoBehaviour {
     public int enemiesToSpawn;
     // Which level is the player on?
     public int level;
+    // How many lives does the player have left?
+    public int lives;
+    // Is the game still live?
+    public bool playing;
+
+    public GameObject towerPlaceButton;
+    public GameObject waveLaunchButton;
 
     void Start() {
         if(inst == null) inst = this;
+        playing = true;
+    }
+
+    void Update() {
+        if(playing && lives < 1) {
+            playing = false;
+        }
+
+        towerPlaceButton.SetActive(playing && (enemiesAlive + enemiesLeft > 0));
+        waveLaunchButton.SetActive(playing && (enemiesLeft > 0));
     }
 
 }
