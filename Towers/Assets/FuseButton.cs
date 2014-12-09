@@ -35,16 +35,35 @@ public class FuseButton : MonoBehaviour {
     void Update() {
         if(mod1 == null || mod2 == null) {
             label.text = ". . .";
-            GetComponent<UIButton>().enabled = false;
+            GetComponent<UIButton>().isEnabled = false;
         } else {
             int cost = (mod1.myModule.level + mod2.myModule.level + 1) * 5;
             if(GameManager.inst.cash < cost) {
                 label.text = "You need\n" + cost + " Gold";
-                GetComponent<UIButton>().enabled = false;
+                GetComponent<UIButton>().isEnabled = false;
             } else {
                 label.text = "Fuse for\n" + cost + " Gold";
-                GetComponent<UIButton>().enabled = true;
+                GetComponent<UIButton>().isEnabled = true;
             }
+        }
+    }
+
+    public void Fuse() {
+        int cost = (mod1.myModule.level + mod2.myModule.level + 1) * 5;
+        if(mod1 == null || mod2 == null || GameManager.inst.cash < cost) {
+            Debug.LogError("Something isn't right...", this.gameObject);
+        } else {
+            mod1.myModule.attribs.Damage += mod2.myModule.attribs.Damage;
+            mod1.myModule.attribs.FireRate += mod2.myModule.attribs.FireRate;
+            mod1.myModule.attribs.Range += mod2.myModule.attribs.Range;
+            mod1.myModule.level += mod2.myModule.level;
+            mod1.isBase = false;
+            mod1.gameObject.name = "Fused Module";
+            mod1.GetComponent<UI2DSprite>().color = new Color(1.0f, 1.0f, 0.0f);
+            DestroyImmediate(mod2.gameObject);
+            mod2 = null;
+            mod1.transform.localPosition = Vector3.zero;
+            GameManager.inst.cash -= cost;
         }
     }
 }
