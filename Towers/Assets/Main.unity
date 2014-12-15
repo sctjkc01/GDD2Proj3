@@ -91887,6 +91887,7 @@ GameObject:
   - 124: {fileID: 1531143149}
   - 81: {fileID: 1531143148}
   - 114: {fileID: 1531143153}
+  - 45: {fileID: 1531143154}
   m_Layer: 0
   m_Name: World Camera
   m_TagString: MainCamera
@@ -91970,6 +91971,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9b430c95956b8448fddfde0b2ed2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!45 &1531143154
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531143147}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 3d2feab1db00f364ca2852fbccff22f4, type: 2}
 --- !u!1001 &1533257963
 Prefab:
   m_ObjectHideFlags: 0
