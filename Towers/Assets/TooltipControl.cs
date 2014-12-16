@@ -22,23 +22,12 @@ public class TooltipControl : MonoBehaviour {
 
         inst.nameField.text = "[b]" + mod.name + "[/b]";
         string desctext = "";
-        FusedModule fm = mod.GetComponent<ModuleControl>().myModule;
-        if(fm.attribs.Element != DamageElements.None) {
-            desctext = "Grants the " + fm.attribs.Element + " element to a tower.";
+        TowerAttributes ta = mod.GetComponent<ModuleControl>().myModule.attribs;
+        if(ta.Element != DamageElements.None) {
+            desctext = ta + "";
         } else {
-            desctext += "Level: " + fm.level + "\n\n";
-            if(fm.attribs.Damage > 1) {
-                desctext += "+" + Mathf.RoundToInt((fm.attribs.Damage - 1) * 100) + "% Damage\n";
-            }
-            if(fm.attribs.FireRate > 1) {
-                desctext += "+" + Mathf.RoundToInt((fm.attribs.FireRate - 1) * 100) + "% Fire Rate\n";
-            }
-            if(fm.attribs.Range > 1) {
-                desctext += "+" + Mathf.RoundToInt((fm.attribs.Range - 1) * 100) + "% Range\n";
-            }
-            if(fm.attribs.Splash > 1) {
-                desctext += "+" + Mathf.RoundToInt((fm.attribs.Splash - 1) * 100) + "% Splash Radius\n";
-            }
+            desctext += "Level: " + mod.GetComponent<ModuleControl>().myModule.level + "\n\n";
+            desctext += (mod.GetComponent<ModuleControl>().myModule.level == 1)?ta * 0.5f:ta;
         }
         inst.desc.text = desctext;
     }

@@ -59,7 +59,9 @@ public class FuseButton : MonoBehaviour {
             mod1.myModule.level += mod2.myModule.level;
             mod1.isBase = false;
             mod1.gameObject.name = "Fused Module";
-            mod1.GetComponent<UI2DSprite>().color = new Color(1.0f, 1.0f, 0.0f);
+            mod1.GetComponent<UI2DSprite>().color = (mod1.GetComponent<UI2DSprite>().color * 0.55f) + (mod2.GetComponent<UI2DSprite>().color * 0.55f);
+            mod1.myModule.tint = mod1.GetComponent<UI2DSprite>().color;
+            mod1.myModule.name = "Fused Module";
             DestroyImmediate(mod2.gameObject);
             mod2 = null;
             mod1.transform.localPosition = Vector3.zero;

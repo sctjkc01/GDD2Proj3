@@ -5,6 +5,8 @@ using System.Collections;
 public abstract class Module {
     public TowerAttributes attribs;
     public int level;
+    public Color tint;
+    public string name;
 
     public static void MultiplyAttributes (TowerAttributes a, Module m)
     {

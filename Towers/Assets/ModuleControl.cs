@@ -6,6 +6,7 @@ public class ModuleControl : UIDragDropItem {
     public FusedModule myModule;
     public bool isOriginal = false;
     public bool isBase = false;
+    public bool installed = false;
 
     protected override void Start() {
         base.Start();
@@ -13,6 +14,8 @@ public class ModuleControl : UIDragDropItem {
             isOriginal = true;
             isBase = true;
             myModule = new FusedModule(template);
+            myModule.tint = GetComponent<UI2DSprite>().color;
+            myModule.name = gameObject.name;
             template = null;
         }
         cloneOnDrag = isOriginal && isBase;
@@ -27,15 +30,19 @@ public class ModuleControl : UIDragDropItem {
     }
 
     protected override void OnDragDropStart() {
-        if(FuseButton.inst.HasModule(this)) {
-            FuseButton.inst.RemoveModule(this);
-        }
         base.OnDragDropStart();
     }
 
     protected override void OnDragDropMove(Vector3 delta) {
+        FuseButton.inst.RemoveModule(this);
         isOriginal = false;
         mCollider.enabled = false;
+        if(installed) {
+            installed = false;
+            ModuleInstall.inst.tower.RemoveModule(myModule);
+            transform.parent = UIDragDropRoot.root;
+            NGUITools.MarkParentAsChanged(gameObject);
+        }
         if(transform.parent.GetComponent<UIGrid>() != null) {
             transform.parent.GetComponent<UIGrid>().repositionNow = true;
             transform.parent = UIDragDropRoot.root;
@@ -52,16 +59,16 @@ public class ModuleControl : UIDragDropItem {
         if (surface != null && surface.transform.parent.gameObject.name == "DropArea") {
             surface = surface.transform.parent.gameObject;
         }
-        if(surface == null || surface.name != "DropArea") {
+        if(surface == null || (surface.name != "DropArea" && surface.name != "AttrMod") || surface.name == "Container") {
             if(isBase) {
                 Destroy(gameObject);
             } else {
-                if(surface == null) surface = GameObject.Find("FusionGUI");
+                surface = GameObject.Find("FusionGUI");
                 mCollider.enabled = true;
                 if(surface != null && surface.GetComponent<UIDragDropContainer>() != null) {
                     transform.parent = surface.GetComponent<UIDragDropContainer>().reparentTarget;
                     NGUITools.MarkParentAsChanged(gameObject);
-                    mGrid = NGUITools.FindInParents<UIGrid>(transform.parent);
+                    mGrid = transform.parent.GetComponent<UIGrid>();
                     if(mGrid != null) mGrid.repositionNow = true;
                 }
             }
@@ -70,12 +77,12 @@ public class ModuleControl : UIDragDropItem {
                 if(isBase) {
                     Destroy(gameObject);
                 } else {
-                    if(surface == null) surface = GameObject.Find("FusionGUI");
+                    surface = GameObject.Find("FusionGUI");
                     mCollider.enabled = true;
                     if(surface != null && surface.GetComponent<UIDragDropContainer>() != null) {
                         transform.parent = surface.GetComponent<UIDragDropContainer>().reparentTarget;
                         NGUITools.MarkParentAsChanged(gameObject);
-                        mGrid = NGUITools.FindInParents<UIGrid>(transform.parent);
+                        mGrid = transform.parent.GetComponent<UIGrid>();
                         if(mGrid != null) mGrid.repositionNow = true;
                     }
                 }
@@ -87,27 +94,13 @@ public class ModuleControl : UIDragDropItem {
                 FuseButton.inst.AddModule(this);
 
             }
-
-
-            //ModuleControl[] MCs = surface.transform.GetComponentsInChildren<ModuleControl>();
-            //if(MCs.Length == 2) {
-            //    Debug.Log("Attempt fusion!");
-            //    ModuleControl othermc = null;
-            //    foreach(ModuleControl mc in MCs) {
-            //        if(mc != this) {
-            //            othermc = mc;
-            //        }
-            //    }
-            //    Debug.Log(othermc.gameObject.name, othermc.gameObject);
-            //    Debug.Log((myModule != null) + ", " + (othermc.myModule != null));
-            //    if(myModule != null && othermc.myModule != null) {
-            //        Debug.Log("Fusion!");
-            //        othermc.myModule = new FusedModule(myModule, othermc.myModule);
-            //        othermc.isBase = false;
-            //        othermc.gameObject.name = "Fused Module";
-            //        Destroy(this.gameObject);
-            //    }
-            //}
+        } else if(surface.name == "AttrMod") {
+            mCollider.enabled = true;
+            transform.parent = surface.transform;
+            NGUITools.MarkParentAsChanged(gameObject);
+            installed = true;
+            ModuleInstall.inst.tower.InstallModule(myModule);
         }
+        transform.localRotation = Quaternion.identity;
     }
 }

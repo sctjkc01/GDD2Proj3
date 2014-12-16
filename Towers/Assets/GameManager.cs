@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
     public GameObject towerPlaceButton;
     public GameObject waveLaunchButton;
 
+    public GameObject gameOverPanel;
+
     void Start() {
         if(inst == null) inst = this;
         playing = true;
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour {
         if(playing && lives < 1) {
             playing = false;
         }
+
+        gameOverPanel.SetActive(!playing);
 
         towerPlaceButton.SetActive(playing && !(enemiesAlive + enemiesLeft > 0));
         waveLaunchButton.SetActive(playing && !(enemiesLeft > 0) && !(towerPlaceButton.GetComponent<TogglePlacement>().toggOn));
