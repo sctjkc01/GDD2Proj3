@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
     // Is the game still live?
     public bool playing;
 
+    private int typing;
+
     public GameObject towerPlaceButton;
     public GameObject waveLaunchButton;
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour {
         if(inst == null) inst = this;
         playing = true;
         level = 0;
+        typing = 0;
     }
 
     void Update() {
@@ -39,6 +42,27 @@ public class GameManager : MonoBehaviour {
 
         towerPlaceButton.SetActive(playing && !(enemiesAlive + enemiesLeft > 0));
         waveLaunchButton.SetActive(playing && !(enemiesLeft > 0) && !(towerPlaceButton.GetComponent<TogglePlacement>().toggOn));
+
+        // Quick end-the-game
+        switch (typing){
+            case 0:
+                if(Input.anyKeyDown) { if(Input.GetKeyDown(KeyCode.G)) { typing++; } else { typing = 0; } } break;
+            case 1:
+                if(Input.anyKeyDown) { if(Input.GetKeyDown(KeyCode.A)) { typing++; } else { typing = 0; } } break;
+            case 2:
+                if(Input.anyKeyDown) { if(Input.GetKeyDown(KeyCode.M)) { typing++; } else { typing = 0; } } break;
+            case 3:
+            case 6:
+                if(Input.anyKeyDown) { if(Input.GetKeyDown(KeyCode.E)) { typing++; } else { typing = 0; } } break;
+            case 4:
+                if(Input.anyKeyDown) { if(Input.GetKeyDown(KeyCode.O)) { typing++; } else { typing = 0; } } break;
+            case 5:
+                if(Input.anyKeyDown) { if(Input.GetKeyDown(KeyCode.V)) { typing++; } else { typing = 0; } } break;
+            case 7:
+                if(Input.anyKeyDown) { if(Input.GetKeyDown(KeyCode.R)) { typing++; } else { typing = 0; } } break;
+            case 8:
+                lives = 0; playing = false; break;
+        }
     }
 
 }

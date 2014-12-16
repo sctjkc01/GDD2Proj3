@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour {
 		if (health <= 0)
 		{
             GameManager.inst.enemiesAlive--;
-            GameManager.inst.cash += GameManager.inst.level;
+            GameManager.inst.cash += (GameManager.inst.level / 3) + 1;
             if(GameManager.inst.enemiesAlive + GameManager.inst.enemiesLeft == 0) {
                 GameManager.inst.cash += (GameManager.inst.level + 1) * 5;
             }

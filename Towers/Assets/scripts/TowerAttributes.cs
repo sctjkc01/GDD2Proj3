@@ -3,10 +3,10 @@ using System.Collections;
 
 [System.Serializable]
 public class TowerAttributes {
-    public float Damage = 1.0f;
-    public float FireRate = 1.0f;
-    public float Splash = 1.0f;
-    public float Range = 1.0f;
+    public float Damage = 0.0f;
+    public float FireRate = 0.0f;
+    public float Splash = 0.0f;
+    public float Range = 0.0f;
     public DamageElements Element = DamageElements.None;
 
     public static TowerAttributes operator +(TowerAttributes left, TowerAttributes right) {

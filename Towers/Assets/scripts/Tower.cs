@@ -44,9 +44,9 @@ public class Tower : MonoBehaviour {
 
         ps.Play();
 
-        e.takeDamage(attribs.Damage);
+        e.takeDamage(2 + (4 * attribs.Damage));
 
-        _timer = attribs.FireRate;
+        _timer = 1f * (Mathf.Pow(0.8f,attribs.FireRate));
 
     }
 
@@ -111,6 +111,7 @@ public class Tower : MonoBehaviour {
                 }
             }
         }
+        colider.radius = attribs.Range + 2.5f;
     }
 
     public void RemoveModule(FusedModule m) {
@@ -133,6 +134,7 @@ public class Tower : MonoBehaviour {
                 }
             }
         }
+        colider.radius = attribs.Range + 2.5f;
     }
 
     void DisplayNextModule() {
