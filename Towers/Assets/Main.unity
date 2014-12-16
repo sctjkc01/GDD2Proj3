@@ -29188,12 +29188,12 @@ MonoBehaviour:
   keepCrispWhenShrunk: 2
   mTrueTypeFont: {fileID: 12800000, guid: b131937640e7c18409fd4c0e0561bab5, type: 3}
   mFont: {fileID: 0}
-  mText: 'WASD / Arrow Keys to move Camera
-
-    Hold Shift to move faster
+  mText: 'WASD / Arrow Keys / Drag RMB to move Camera, hold Shift to move faster
 
 
-    Scroll to Zoom'
+    Scroll to Zoom, Q/E to Rotate
+
+    Left Click a tower to manage it'
   mFontSize: 20
   mFontStyle: 0
   mAlignment: 2
@@ -39869,6 +39869,108 @@ Prefab:
   m_RootGameObject: {fileID: 168463513}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &657412134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 657412135}
+  - 114: {fileID: 657412137}
+  - 114: {fileID: 657412136}
+  m_Layer: 5
+  m_Name: LifeCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657412135
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 657412134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 187.5, y: 1.52587891e-05, z: 0}
+  m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
+  m_Children: []
+  m_Father: {fileID: 854792675}
+  m_RootOrder: 0
+--- !u!114 &657412136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 657412134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d507b0a9bfa3b149a61c086bc982488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &657412137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 657412134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftAnchor:
+    target: {fileID: 854792675}
+    relative: 1
+    absolute: 20
+  rightAnchor:
+    target: {fileID: 854792675}
+    relative: 1
+    absolute: 275
+  bottomAnchor:
+    target: {fileID: 854792675}
+    relative: 0
+    absolute: 0
+  topAnchor:
+    target: {fileID: 854792675}
+    relative: 1
+    absolute: 0
+  updateAnchors: 1
+  mColor: {r: .158620596, g: 1, b: 0, a: 1}
+  mPivot: 4
+  mWidth: 255
+  mHeight: 32
+  mDepth: 19
+  autoResizeBoxCollider: 0
+  hideIfOffScreen: 0
+  keepAspectRatio: 0
+  aspectRatio: 7.96875
+  keepCrispWhenShrunk: 1
+  mTrueTypeFont: {fileID: 12800000, guid: b131937640e7c18409fd4c0e0561bab5, type: 3}
+  mFont: {fileID: 0}
+  mText: 00
+  mFontSize: 28
+  mFontStyle: 0
+  mAlignment: 1
+  mEncoding: 1
+  mMaxLineCount: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mOverflow: 1
+  mMaterial: {fileID: 0}
+  mApplyGradient: 1
+  mGradientTop: {r: .698039234, g: .698039234, b: .698039234, a: 1}
+  mGradientBottom: {r: .996078432, g: .996078432, b: .996078432, a: 1}
+  mSpacingX: 0
+  mSpacingY: 0
+  mShrinkToFit: 0
+  mMaxLineWidth: 0
+  mMaxLineHeight: 0
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!1001 &658000521
 Prefab:
   m_ObjectHideFlags: 0
@@ -49704,6 +49806,97 @@ MeshFilter:
   m_PrefabInternal: {fileID: 166799413}
   m_GameObject: {fileID: 853136278}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &854792674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 854792675}
+  - 114: {fileID: 854792676}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854792675
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 854792674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -590.000061, y: 270.000031, z: 0}
+  m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
+  m_Children:
+  - {fileID: 657412135}
+  m_Father: {fileID: 1871723954}
+  m_RootOrder: 9
+--- !u!114 &854792676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 854792674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftAnchor:
+    target: {fileID: 1871723954}
+    relative: 0
+    absolute: 10
+  rightAnchor:
+    target: {fileID: 1871723954}
+    relative: 0
+    absolute: 90
+  bottomAnchor:
+    target: {fileID: 1871723954}
+    relative: 1
+    absolute: -106
+  topAnchor:
+    target: {fileID: 1871723954}
+    relative: 1
+    absolute: -74
+  updateAnchors: 1
+  mColor: {r: .158620596, g: 1, b: 0, a: 1}
+  mPivot: 4
+  mWidth: 80
+  mHeight: 32
+  mDepth: 19
+  autoResizeBoxCollider: 0
+  hideIfOffScreen: 0
+  keepAspectRatio: 0
+  aspectRatio: 2.5
+  keepCrispWhenShrunk: 1
+  mTrueTypeFont: {fileID: 12800000, guid: b131937640e7c18409fd4c0e0561bab5, type: 3}
+  mFont: {fileID: 0}
+  mText: Level
+  mFontSize: 28
+  mFontStyle: 0
+  mAlignment: 0
+  mEncoding: 1
+  mMaxLineCount: 0
+  mEffectStyle: 0
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mOverflow: 0
+  mMaterial: {fileID: 0}
+  mApplyGradient: 1
+  mGradientTop: {r: .698039234, g: .698039234, b: .698039234, a: 1}
+  mGradientBottom: {r: .996078432, g: .996078432, b: .996078432, a: 1}
+  mSpacingX: 0
+  mSpacingY: 0
+  mShrinkToFit: 0
+  mMaxLineWidth: 0
+  mMaxLineHeight: 0
+  mLineWidth: 0
+  mMultiline: 1
 --- !u!1001 &855736182
 Prefab:
   m_ObjectHideFlags: 0
@@ -110843,6 +111036,7 @@ Transform:
   - {fileID: 1811351306}
   - {fileID: 1730154319}
   - {fileID: 1867292320}
+  - {fileID: 854792675}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!54 &1871723955

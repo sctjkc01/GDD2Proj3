@@ -100,6 +100,7 @@ public class ModuleControl : UIDragDropItem {
             NGUITools.MarkParentAsChanged(gameObject);
             installed = true;
             ModuleInstall.inst.tower.InstallModule(myModule);
+            transform.localPosition = Vector3.zero;
         }
         transform.localRotation = Quaternion.identity;
     }

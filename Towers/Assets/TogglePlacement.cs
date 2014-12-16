@@ -23,6 +23,7 @@ public class TogglePlacement : MonoBehaviour {
             sprite.defaultColor = OffColor;
             label.text = "Click to\nbuy towers";
         }
+        AddTower.PlacingTowers = toggOn;
 
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         for(int i = 0; i < towers.Length; i++) {
