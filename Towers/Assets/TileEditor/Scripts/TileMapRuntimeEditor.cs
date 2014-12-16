@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
+//using UnityEditor;
 
 public class TileMapRuntimeEditor {
-    private static TileMap tm;
-
     public static bool SetTile(int x, int z, Transform prefab, int direction) {
-        if(tm == null) {
-            tm = GameObject.Find("TileMap").GetComponent<TileMap>();
-        }
+        var tm = GameObject.Find("TileMap").GetComponent<TileMap>();
 
         var hash = tm.GetHash(x, z);
         var index = tm.hashes.IndexOf(hash);
@@ -36,6 +32,8 @@ public class TileMapRuntimeEditor {
     }
 
     private static bool UpdateTile(int index) {
+        var tm = GameObject.Find("TileMap").GetComponent<TileMap>();
+
         //Destroy existing tile
         if(tm.instances[index] != null) {
 #if UNITY_4_3
@@ -48,7 +46,7 @@ public class TileMapRuntimeEditor {
         //Check if prefab is null
         if(tm.prefabs[index] != null) {
             //Place the tile
-            var instance = (Transform)PrefabUtility.InstantiatePrefab(tm.prefabs[index]);
+            var instance = (Transform)GameObject.Instantiate(tm.prefabs[index]);
             instance.parent = tm.transform;
             instance.localPosition = tm.GetPosition(index);
             instance.localRotation = Quaternion.Euler(0, tm.directions[index] * 90, 0);

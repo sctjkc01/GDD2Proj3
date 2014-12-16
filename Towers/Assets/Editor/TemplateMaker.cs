@@ -21,6 +21,6 @@ public class TemplateMaker {
         AssetDatabase.SaveAssets();
         EditorUtility.FocusProjectWindow();
         Selection.activeObject = asset;
-        asset.hideFlags = HideFlags.DontSave;
+        //asset.hideFlags = HideFlags.DontSave;
     }
 }
