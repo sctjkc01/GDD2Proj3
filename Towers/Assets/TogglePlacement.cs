@@ -14,18 +14,19 @@ public class TogglePlacement : MonoBehaviour {
     }
 
 
-    public void Toggle()
-    {
+    public void Toggle() {
         toggOn = !toggOn;
-        if (toggOn)
-        {
+        if(toggOn) {
             sprite.defaultColor = OnColor;
             label.text = "Click to stop\nbuying towers";
-        }
-        else
-        {
+        } else {
             sprite.defaultColor = OffColor;
             label.text = "Click to\nbuy towers";
+        }
+
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        for(int i = 0; i < towers.Length; i++) {
+            towers[i].GetComponent<CapsuleCollider>().enabled = !toggOn;
         }
     }
 }
